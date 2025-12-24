@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Story of English | ULAB ENG538</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ENG538</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#vocab">Vocabulary</a></li>
+            <li><a href="#map-section">Migration Map</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in-up">
+            <h1>From a Small Island to a <span class="highlight">Global Language</span></h1>
+            <p>Four centuries ago, English was spoken by 5-7 million people. Today, it connects over 750 million speakers worldwide[cite: 206, 237].</p>
+            <a href="#timeline" class="btn-primary">Explore the History</a>
+        </div>
+    </header>
+
+    <section class="stats-bar">
+        <div class="stat-item">
+            <h3>5000 B.C.</h3>
+            <p>Proto-Indo-European Origins [cite: 161]</p>
+        </div>
+        <div class="stat-item">
+            <h3>50%</h3>
+            <p>Words derived from French/Latin [cite: 215]</p>
+        </div>
+        <div class="stat-item">
+            <h3>60+</h3>
+            <p>Countries with English as Official Language [cite: 239]</p>
+        </div>
+    </section>
+
+    <section id="timeline" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">The Evolution Timeline</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item left">
+                    <div class="content scroll-trigger">
+                        <h3>5000 B.C. - The Roots</h3>
+                        <p>English begins in the <strong>Germanic Branch</strong> of the Indo-European family, making it a cousin to German and Dutch [cite: 161, 175-177].</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="content scroll-trigger">
+                        <h3>450-1100 A.D. - Old English</h3>
+                        <p>The language of Anglo-Saxon settlers mixed with Old Norse (Viking) invaders. This gave us basic words like <em>House</em> and <em>Woman</em>[cite: 201, 211].</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="content scroll-trigger">
+                        <h3>1100-1500 A.D. - Middle English</h3>
+                        <p>Following the Norman Conquest, French influenced the language heavily. Words like <em>Chivalrous</em> and <em>Judge</em> entered here[cite: 202, 223].</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="content scroll-trigger">
+                        <h3>17th Century - Global Spread</h3>
+                        <p>Colonization spreads English to North America (17th C) and later Australia (18th C), creating "World Englishes"[cite: 236].</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="vocab" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title text-white">Vocabulary Roots</h2>
+            <p class="subtitle text-white">Hover over the cards to see the modern English translation.</p>
+            
+            <div class="card-grid">
+                <div class="flip-card scroll-trigger">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Hus-</h3>
+                            <p>Anglo-Saxon Origin</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>House</h3>
+                            <p>Related: Husband, Husbandry [cite: 211]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card scroll-trigger">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Kaka</h3>
+                            <p>Old Norse Origin</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Cake</h3>
+                            <p>A direct loan word from Vikings [cite: 212]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card scroll-trigger">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Kno-</h3>
+                            <p>Anglo-Saxon Origin</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Knowledge</h3>
+                            <p>Meaning: Skill or knowing [cite: 211]</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="flip-card scroll-trigger">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Acumen</h3>
+                            <p>Latin/French Origin</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Judgment</h3>
+                            <p>Ability to make good judgments [cite: 218]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="map-section" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">The Journey of English</h2>
+            <p class="text-center">Visualizing the spread from the UK to the Americas and Australia[cite: 236].</p>
+            
+            <div class="map-wrapper shadow-box">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button id="start-btn" class="btn-primary">Start Migration ✈️</button>
+                    <p id="map-status">Ready for takeoff...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Curriculum Data: ULAB ENG538 | Developed for Education</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

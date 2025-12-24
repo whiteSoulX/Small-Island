@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Spread of English</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <style>
+        #map { height: 85vh; width: 100%; border-top: 5px solid #2c3e50; }
+        .plane-icon { font-size: 30px; transition: all 2s ease-in-out; }
+        .info-panel { position: absolute; bottom: 30px; left: 30px; z-index: 1000; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.3); max-width: 300px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <h1>ENG538: Migration Map</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="info-panel">
+        <h3>The Colonial Spread</h3>
+        <p id="route-desc">English spread from Britain to the Americas and Australia through colonization.</p>
+        <button class="btn" onclick="startJourney()">Start Journey ✈️</button>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        // 1. Setup Map
+        var map = L.map('map').setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 2. Data Points from your Slides
+        var locations = [
+            { name: "United Kingdom (Origin)", coords: [51.5074, -0.1278], desc: "5th-7th Century: Old English begins here." },
+            { name: "North America (17th C)", coords: [38.9072, -77.0369], desc: "17th Century: First colonies establish American English." },
+            { name: "Australia (18th C)", coords: [-35.2809, 149.1300], desc: "18th Century: Penal colonies establish Australian English." },
+            { name: "India (Global)", coords: [20.5937, 78.9629], desc: "Widely spoken today as a result of the British Empire." }
+        ];
+
+        // 3. Create Plane Icon
+        var planeIcon = L.divIcon({ className: 'plane-icon', html: '✈️', iconSize: [40, 40] });
+        var marker = L.marker(locations[0].coords, {icon: planeIcon}).addTo(map).bindPopup(locations[0].name).openPopup();
+
+        // 4. Draw Path
+        var latlngs = locations.map(loc => loc.coords);
+        var polyline = L.polyline(latlngs, {color: 'red', dashArray: '10, 10', weight: 3}).addTo(map);
+
+        // 5. Animation Logic
+        let step = 0;
+        function startJourney() {
+            if (step < locations.length - 1) {
+                step++;
+                var nextLoc = locations[step];
+                
+                // Update Text
+                document.getElementById('route-desc').innerHTML = `<strong>Traveling to ${nextLoc.name}...</strong><br>${nextLoc.desc}`;
+
+                // Move Map & Marker
+                map.flyTo(nextLoc.coords, 4, { duration: 2.5 });
+                setTimeout(() => {
+                    marker.setLatLng(nextLoc.coords).bindPopup(nextLoc.name).openPopup();
+                }, 2500); // Wait for flyTo to finish
+            } else {
+                step = 0; // Reset
+                alert("Journey Complete! Resetting.");
+                map.flyTo(locations[0].coords, 2);
+                marker.setLatLng(locations[0].coords);
+            }
+        }
+    </script>
+</body>
+</html>
